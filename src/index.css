@@ -6,12 +6,7 @@
 }
 
 body {
-    @apply bg-white text-slate-900 text-sm antialiased;
-}
-
-/* The 'dark' class will now be applied to the <html> element by ThemeContext */
-html.dark body {
-    @apply bg-slate-900 text-slate-100;
+    @apply bg-black text-white text-sm antialiased;
 }
 
 @layer components {
@@ -22,47 +17,4 @@ html.dark body {
     .btn {
         @apply cursor-pointer rounded-full px-8 py-2.5 font-medium text-white transition hover:opacity-90 active:scale-98;
     }
-}
-
-/* Custom Scrollbar for better UX */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
-/* Dark mode scrollbar */
-html.dark ::-webkit-scrollbar-track {
-    background: #1e293b; /* slate-800 */
-}
-
-html.dark ::-webkit-scrollbar-thumb {
-    background: #475569; /* slate-600 */
-}
-
-html.dark ::-webkit-scrollbar-thumb:hover {
-    background: #64748b; /* slate-500 */
-}
-
-/* Hide scrollbar for specific elements (e.g., category filter) */
-.scrollbar-hide::-webkit-scrollbar {
-    display: none;
-}
-
-.scrollbar-hide {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
 }
