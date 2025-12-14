@@ -30,7 +30,7 @@ function ProjectCard({ item }) {
                     {item.technologies.map((tech, idx) => (
                         <span
                             key={idx}
-                            className="px-3 py-1 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-300 border border-indigo-400/30"
+                            className="px-3 py-1 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-300 border border-indigo-400/30 hover:bg-indigo-500/20 transition-colors"
                         >
                             {tech}
                         </span>
@@ -40,9 +40,12 @@ function ProjectCard({ item }) {
             {item.highlights && item.highlights.length > 0 && (
                 <div className="mt-4 pt-4 border-t border-white/5 dark:border-slate-700/30">
                     <p className="text-sm font-semibold text-slate-300 dark:text-slate-400 mb-2">Highlights:</p>
-                    <ul className="list-disc list-inside text-slate-400 dark:text-slate-500 text-xs space-y-1">
+                    <ul className="text-slate-400 dark:text-slate-500 text-xs space-y-1">
                         {item.highlights.map((highlight, idx) => (
-                            <li key={idx}>{highlight}</li>
+                            <li key={idx} className="flex items-start gap-1">
+                                <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-indigo-400 flex-shrink-0"></span>
+                                <span className="flex-1">{highlight}</span>
+                            </li>
                         ))}
                     </ul>
                 </div>

@@ -22,10 +22,12 @@ function EducationCard({ item }) {
                 <h3 className="text-2xl font-bold mt-4 mb-2 text-slate-100 dark:text-slate-100 leading-tight">
                     {item.title}
                 </h3>
-                <p className="text-indigo-300 text-lg font-medium mb-3">{item.school}</p>
+                <p className="text-indigo-300 text-base font-medium mb-3">{item.school}</p>
             </div>
-            <div className="mt-4 pt-4 border-t border-white/5 dark:border-slate-700/30">
+            <div className="mt-4 pt-4 border-t border-white/5 dark:border-slate-700/30 flex items-center justify-between">
                 <p className="text-slate-400 dark:text-slate-500 text-sm italic">{item.period}</p>
+                {/* Optional: Add a subtle icon or indicator for the period if desired */}
+                {/* <CalendarDays size={14} className="text-slate-500" /> */} 
             </div>
         </div>
     );

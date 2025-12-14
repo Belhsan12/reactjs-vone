@@ -1,7 +1,8 @@
 import React from 'react';
 import { personalInfo, coreTechnologies } from '../data/portfolioData';
+import ContactInfoCard from './ContactInfoCard';
+import { Mail, Phone, MapPin, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { MapPin, Mail, Phone, Globe } from 'lucide-react';
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -93,19 +94,13 @@ function HeroSection() {
                     </motion.a>
                 </motion.div>
 
-                <motion.div className="flex flex-wrap justify-center gap-6 text-slate-300 dark:text-slate-400 text-sm" variants={containerVariants}>
-                    <motion.div className="flex items-center gap-2" variants={itemVariants}>
-                        <MapPin size={18} className="text-indigo-400" /> {location}
-                    </motion.div>
-                    <motion.div className="flex items-center gap-2" variants={itemVariants}>
-                        <Phone size={18} className="text-indigo-400" /> {phone}
-                    </motion.div>
-                    <motion.a href={`mailto:${email}`} className="flex items-center gap-2 hover:text-indigo-400 transition-colors" variants={itemVariants}>
-                        <Mail size={18} className="text-indigo-400" /> {email}
-                    </motion.a>
-                    <motion.a href={website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-indigo-400 transition-colors" variants={itemVariants}>
-                        <Globe size={18} className="text-indigo-400" /> {website.replace('https://', '')}
-                    </motion.a>
+                <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 w-full max-w-3xl" variants={containerVariants}>
+                    <ContactInfoCard icon={<MapPin size={18} />} label="Location" value={location} variants={itemVariants} />
+                    <ContactInfoCard icon={<Phone size={18} />} label="Phone" value={phone} link={`tel:${phone}`} variants={itemVariants} />
+                    <ContactInfoCard icon={<Mail size={18} />} label="Email" value={email} link={`mailto:${email}`} variants={itemVariants} />
+                    {website && (
+                        <ContactInfoCard icon={<Globe size={18} />} label="Website" value={website.replace('https://', '')} link={website} variants={itemVariants} />
+                    )}
                 </motion.div>
             </motion.div>
         </section>

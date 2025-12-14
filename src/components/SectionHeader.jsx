@@ -4,7 +4,7 @@ function SectionHeader({ title, subtitle }) {
     return (
         <div className="text-center mb-12">
             {subtitle && (
-                <p className="text-sm font-medium text-indigo-400 dark:text-indigo-300 mb-2 tracking-wide uppercase">
+                <p className="text-sm font-semibold text-indigo-400 dark:text-indigo-300 mb-2 tracking-wide uppercase opacity-90">
                     {subtitle}
                 </p>
             )}
