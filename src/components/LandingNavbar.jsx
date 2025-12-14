@@ -11,6 +11,7 @@ export default function LandingNavbar() {
 
     const links = [
         { name: 'Home', href: '/' },
+        { name: 'Portfolio', href: '/portfolio' }, // NEWLY ADDED
         { name: 'Courses', href: '#featured-courses' },
         { name: 'About', href: '/about' }, // UPDATED
         { name: 'Contact', href: '/contact' } // UPDATED

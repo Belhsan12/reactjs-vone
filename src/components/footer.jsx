@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
     const links = [
+        { name: 'Portfolio', href: '/portfolio' }, // NEWLY ADDED
         { name: 'About Us', href: '/about' },
         { name: 'Contact', href: '/contact' },
         { name: 'Terms of Service', href: '/terms' },

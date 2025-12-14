@@ -1,78 +1,66 @@
-import { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import LandingPage from './pages/LandingPage';
-import LoginPage from './pages/auth/LoginPage';
-import RegisterPage from './pages/auth/RegisterPage';
-import ForgotPasswordPage from './pages/auth/ForgotPasswordPage';
-import DashboardLayout from './layouts/DashboardLayout';
-import DashboardOverviewPage from './pages/dashboard/DashboardOverviewPage';
-import CoursesPage from './pages/dashboard/CoursesPage';
-import CourseDetailsPage from './pages/dashboard/CourseDetailsPage';
-import LearningPage from './pages/dashboard/LearningPage';
-import MyLearningPage from './pages/dashboard/MyLearningPage';
-import InstructorsPage from './pages/dashboard/InstructorsPage';
-import ProfilePage from './pages/dashboard/ProfilePage';
-import ProgressPage from './pages/dashboard/ProgressPage';
-import SettingsPage from './pages/dashboard/SettingsPage';
-import AboutPage from './pages/AboutPage'; // NEW
-import ContactPage from './pages/ContactPage'; // NEW
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import LenisScroll from './components/lenis-scroll';
+import LandingNavbar from './components/LandingNavbar';
+import Footer from './components/footer';
+import DashboardNavbar from './components/DashboardNavbar';
+import Sidebar from './components/Sidebar';
+import { SidebarProvider } from './context/SidebarContext';
+import { PortfolioPage } from './pages'; // Import PortfolioPage
+
+// Placeholder components for other routes
+const HomePage = () => (
+    <div className="h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 to-purple-600 text-white text-3xl font-bold">
+        <LandingNavbar />
+        <h1 className="z-10">Welcome to the Home Page!</h1>
+        <Footer />
+    </div>
+);
+const AboutPage = () => (
+    <div className="h-screen flex items-center justify-center bg-gradient-to-br from-emerald-500 to-blue-600 text-white text-3xl font-bold">
+        <LandingNavbar />
+        <h1 className="z-10">About Us</h1>
+        <Footer />
+    </div>
+);
+const ContactPage = () => (
+    <div className="h-screen flex items-center justify-center bg-gradient-to-br from-rose-500 to-amber-600 text-white text-3xl font-bold">
+        <LandingNavbar />
+        <h1 className="z-10">Contact Us</h1>
+        <Footer />
+    </div>
+);
+const LoginPage = () => <div className="h-screen flex items-center justify-center bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100 text-3xl font-bold">Login Page</div>;
+const RegisterPage = () => <div className="h-screen flex items-center justify-center bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100 text-3xl font-bold">Register Page</div>;
+const DashboardPage = () => (
+    <SidebarProvider>
+        <div className="flex h-screen bg-slate-50 dark:bg-slate-900">
+            <Sidebar />
+            <div className="flex-1 flex flex-col">
+                <DashboardNavbar />
+                <main className="flex-1 p-6 overflow-y-auto">
+                    <h1 className="text-4xl font-bold text-slate-900 dark:text-slate-100">Dashboard</h1>
+                    <p className="text-slate-600 dark:text-slate-400 mt-2">Welcome to your personalized dashboard!</p>
+                    {/* Add more dashboard content here */}
+                </main>
+            </div>
+        </div>
+    </SidebarProvider>
+);
 
 export default function App() {
-    // UI-only authentication state: true if 'isLoggedIn' is in localStorage
-    const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const handleLoginSuccess = () => {
-            setIsLoggedIn(true);
-            localStorage.setItem('isLoggedIn', 'true');
-        };
-        const handleLogout = () => {
-            setIsLoggedIn(false);
-            localStorage.removeItem('isLoggedIn');
-            navigate('/'); // Redirect to landing page on logout
-        };
-
-        // Listen for custom events to simulate login/logout
-        window.addEventListener('loginSuccess', handleLoginSuccess);
-        window.addEventListener('logout', handleLogout);
-
-        return () => {
-            window.removeEventListener('loginSuccess', handleLoginSuccess);
-            window.removeEventListener('logout', handleLogout);
-        };
-    }, [navigate]);
-
     return (
-        <Routes>
-            {/* Public Routes */}
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-            <Route path="/about" element={<AboutPage />} /> {/* NEW */}
-            <Route path="/contact" element={<ContactPage />} /> {/* NEW */}
-
-            {/* Protected Dashboard Routes */}
-            {isLoggedIn ? (
-                <Route path="/dashboard" element={<DashboardLayout />}>
-                    <Route index element={<DashboardOverviewPage />} />
-                    <Route path="courses" element={<CoursesPage />} />
-                    <Route path="courses/:courseId" element={<CourseDetailsPage />} />
-                    <Route path="courses/:courseId/lesson/:lessonId" element={<LearningPage />} />
-                    <Route path="my-learning" element={<MyLearningPage />} />
-                    <Route path="instructors" element={<InstructorsPage />} />
-                    <Route path="profile" element={<ProfilePage />} />
-                    <Route path="progress" element={<ProgressPage />} />
-                    <Route path="settings" element={<SettingsPage />} />
-                </Route>
-            ) : (
-                // Redirect unauthenticated users trying to access dashboard routes to login
-                <Route path="/dashboard/*" element={<LoginPage />} />
-            )}
-
-            {/* Fallback route for unknown paths */}
-            <Route path="*" element={<LandingPage />} />
-        </Routes>
+        <div className="App">
+            <LenisScroll />
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/portfolio" element={<PortfolioPage />} /> {/* New Portfolio Route */}
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/dashboard/*" element={<DashboardPage />} />
+            </Routes>
+        </div>
     );
 }
