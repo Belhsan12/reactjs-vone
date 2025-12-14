@@ -24,37 +24,37 @@ const VideoPlayerPage = () => {
     return (
       <div className="container mx-auto p-4 md:p-8 lg:p-12 flex flex-col lg:flex-row gap-8 animate-pulse">
         <div className="flex-1">
-          <div className="w-full aspect-video bg-slate-300 dark:bg-slate-700 rounded-xl mb-6"></div>
-          <div className="h-8 bg-slate-300 dark:bg-slate-700 rounded w-3/4 mb-4"></div>
-          <div className="h-4 bg-slate-300 dark:bg-slate-700 rounded w-1/2 mb-6"></div>
+          <div className="w-full aspect-video bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded-xl mb-6"></div> {/* Gradient pulse */}
+          <div className="h-8 bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded w-3/4 mb-4"></div> {/* Gradient pulse */}
+          <div className="h-4 bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded w-1/2 mb-6"></div> {/* Gradient pulse */}
           <div className="flex items-center gap-4 mb-6">
-            <div className="h-10 w-24 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
-            <div className="h-10 w-24 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
-            <div className="h-10 w-24 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
+            <div className="h-10 w-24 bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded-full"></div> {/* Gradient pulse */}
+            <div className="h-10 w-24 bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded-full"></div> {/* Gradient pulse */}
+            <div className="h-10 w-24 bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded-full"></div> {/* Gradient pulse */}
           </div>
-          <div className="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 mb-6">
+          <div className="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 mb-6 shadow-md dark:shadow-slate-900/20"> {/* Added shadow */}
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 rounded-full bg-slate-300 dark:bg-slate-700"></div>
+              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600"></div> {/* Gradient pulse */}
               <div className="flex-1 space-y-2">
-                <div className="h-5 bg-slate-300 dark:bg-slate-700 rounded w-40"></div>
-                <div className="h-4 bg-slate-300 dark:bg-slate-700 rounded w-32"></div>
+                <div className="h-5 bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded w-40"></div>
+                <div className="h-4 bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded w-32"></div>
               </div>
-              <div className="h-10 w-24 bg-slate-300 dark:bg-slate-700 rounded-xl"></div>
+              <div className="h-10 w-24 bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded-xl"></div>
             </div>
-            <div className="h-4 bg-slate-300 dark:bg-slate-700 rounded w-full mb-2"></div>
-            <div className="h-4 bg-slate-300 dark:bg-slate-700 rounded w-5/6"></div>
+            <div className="h-4 bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded w-full mb-2"></div>
+            <div className="h-4 bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded w-5/6"></div>
           </div>
         </div>
         <div className="w-full lg:w-80 flex-shrink-0">
-          <div className="h-8 bg-slate-300 dark:bg-slate-700 rounded w-1/2 mb-6"></div>
+          <div className="h-8 bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded w-1/2 mb-6"></div> {/* Gradient pulse */}
           <div className="space-y-4">
             {Array.from({ length: 4 }).map((_, i) => (
               <div key={i} className="flex gap-3">
-                <div className="relative flex-shrink-0 w-40 h-24 rounded-lg bg-slate-300 dark:bg-slate-700"></div>
+                <div className="relative flex-shrink-0 w-40 h-24 rounded-lg bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600"></div> {/* Gradient pulse */}
                 <div className="flex-1 flex flex-col justify-center space-y-2">
-                  <div className="h-4 bg-slate-300 dark:bg-slate-700 rounded w-full"></div>
-                  <div className="h-3 bg-slate-300 dark:bg-slate-700 rounded w-3/4"></div>
-                  <div className="h-3 bg-slate-300 dark:bg-slate-700 rounded w-1/2"></div>
+                  <div className="h-4 bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded w-full"></div>
+                  <div className="h-3 bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded w-3/4"></div>
+                  <div className="h-3 bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded w-1/2"></div>
                 </div>
               </div>
             ))}
@@ -109,17 +109,17 @@ const VideoPlayerPage = () => {
         <h1 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-2 leading-tight">
           {video.title}
         </h1>
-        <div className="flex items-center justify-between flex-wrap gap-2 text-sm text-slate-600 dark:text-slate-400 mb-6">
+        <div className="flex items-center justify-between flex-wrap gap-4 text-sm text-slate-600 dark:text-slate-400 mb-6"> {/* Increased gap */}
           <div className="flex items-center gap-4">
             <span>{formatViews(video.views)}</span>
             <span className="w-1 h-1 bg-slate-400 dark:bg-slate-600 rounded-full"></span>
             <span>{formatUploadDate(video.uploadDate)}</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Button variant="icon" aria-label="Like video"><ThumbsUp size={18} /></Button>
-            <Button variant="icon" aria-label="Share video"><Share2 size={18} /></Button>
-            <Button variant="icon" aria-label="Save video"><Save size={18} /></Button>
-            <Button variant="icon" aria-label="More options"><MoreHorizontal size={18} /></Button>
+          <div className="flex items-center gap-2 md:gap-3 lg:gap-4"> {/* Responsive gap for action buttons */}
+            <Button variant="icon" aria-label="Like video" className="hover:text-indigo-600 dark:hover:text-indigo-400"><ThumbsUp size={20} /></Button> {/* Increased icon size */}
+            <Button variant="icon" aria-label="Share video" className="hover:text-emerald-600 dark:hover:text-emerald-400"><Share2 size={20} /></Button>
+            <Button variant="icon" aria-label="Save video" className="hover:text-rose-600 dark:hover:text-rose-400"><Save size={20} /></Button>
+            <Button variant="icon" aria-label="More options" className="hover:text-slate-600 dark:hover:text-slate-400"><MoreHorizontal size={20} /></Button>
           </div>
         </div>
 
@@ -130,12 +130,12 @@ const VideoPlayerPage = () => {
             channelIcon={video.channelIcon}
             subscribers={`${formatViews(video.views * 10).replace(' views', '')}`}
           />
-          <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+          <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed group">
             {displayedDescription}
             {needsShowMore && (
               <button
                 onClick={() => setShowFullDescription(!showFullDescription)}
-                className="text-indigo-600 dark:text-indigo-400 hover:underline ml-1 font-medium"
+                className="text-indigo-600 dark:text-indigo-400 hover:underline ml-1 font-medium transition-colors duration-200 ease-in-out"
               >
                 {showFullDescription ? 'Show less' : 'Show more'}
               </button>

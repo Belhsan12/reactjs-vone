@@ -10,16 +10,16 @@ const RelatedVideoCard = React.memo(({ video }) => {
   return (
     <Link
       to={`/video/${id}`}
-      className="flex gap-3 group transition-all duration-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg p-2 -m-2"
+      className="flex gap-3 group transition-all duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg p-2 -m-2 hover:shadow-md dark:hover:shadow-slate-900/20" /* Increased duration, added ease-in-out, subtle shadow on hover */
     >
       <div className="relative flex-shrink-0 w-40 h-24 rounded-lg overflow-hidden">
         <img
           src={thumbnail}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" /* Increased duration, added ease-in-out */
           loading="lazy"
         />
-        <span className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-1 py-0.5 rounded-md font-medium">
+        <span className="absolute bottom-1 right-1 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded-md font-medium"> {/* Slightly darker background, adjusted padding */}
           {duration}
         </span>
       </div>

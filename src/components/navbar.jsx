@@ -19,13 +19,13 @@ const Navbar = () => {
           <Menu size={24} />
         </button>
         <Link to="/" className="flex items-center gap-2 group">
-          <span className="bg-gradient-to-r from-indigo-600 to-purple-600 text-transparent bg-clip-text text-xl md:text-2xl font-bold tracking-tight transition-all duration-300 group-hover:scale-105">
+          <span className="bg-gradient-to-br from-indigo-600 to-purple-600 text-transparent bg-clip-text text-xl md:text-2xl font-bold tracking-tight transition-all duration-300 ease-in-out group-hover:scale-105 group-hover:from-indigo-700 group-hover:to-purple-700"> {/* Changed to br, added ease-in-out, and gradient hover effect */}
             StreamVista
           </span>
         </Link>
       </div>
 
-      <form onSubmit={handleSearch} className="flex-1 max-w-xl hidden md:flex items-center bg-slate-100 dark:bg-slate-800 rounded-full px-4 py-2 border border-slate-200 dark:border-slate-700 focus-within:ring-2 focus-within:ring-indigo-500 transition-all duration-300">
+      <form onSubmit={handleSearch} className="flex-1 max-w-xl hidden md:flex items-center bg-slate-100 dark:bg-slate-800 rounded-full px-4 py-2 border border-slate-200 dark:border-slate-700 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:border-transparent transition-all duration-300 ease-in-out"> {/* Added focus-within:border-transparent and ease-in-out */}
         <input
           type="text"
           placeholder="Search videos..."

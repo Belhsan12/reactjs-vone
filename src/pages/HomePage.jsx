@@ -29,7 +29,7 @@ const HomePage = () => {
       <CategoryFilter selectedCategory={selectedCategory} onSelectCategory={handleSelectCategory} />
 
       <div className="container mx-auto p-4 md:p-8 lg:p-12 flex-1">
-        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-8 tracking-tight">
+        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-br from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-8 tracking-tight"> {/* Changed to br for diagonal gradient */}
           Explore Videos
         </h1>
 

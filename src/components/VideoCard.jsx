@@ -18,16 +18,16 @@ const VideoCard = React.memo(({ video }) => {
   return (
     <Link
       to={`/video/${id}`}
-      className="relative block group rounded-xl overflow-hidden shadow-lg dark:shadow-slate-900/40 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-indigo-500/20 active:scale-[0.98]"
+      className="relative block group rounded-xl overflow-hidden shadow-lg dark:shadow-slate-900/40 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-2xl hover:shadow-indigo-500/30 active:scale-[0.98]" /* Enhanced hover scale and shadow */
     >
       <div className="relative w-full aspect-video overflow-hidden">
         <img
           src={thumbnail}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" /* Added ease-in-out */
           loading="lazy"
         />
-        <span className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded-md font-medium">
+        <span className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded-md font-medium"> {/* Slightly darker background */}
           {duration}
         </span>
       </div>
