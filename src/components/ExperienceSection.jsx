@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionHeader from './SectionHeader';
-import AchievementCard from './AchievementCard'; // Renamed import
-import { achievements } from '../data/portfolioData'; // Changed data source
+import ExperienceCard from './ExperienceCard';
+import { experiences } from '../data/portfolioData';
 import { motion } from 'framer-motion';
 
 const containerVariants = {
@@ -10,7 +10,7 @@ const containerVariants = {
         opacity: 1,
         transition: {
             staggerChildren: 0.1,
-            delayChildren: 0.3,
+            delayChildren: 0.2,
         },
     },
 };
@@ -28,10 +28,10 @@ const itemVariants = {
     },
 };
 
-function AchievementsSection() { // Renamed component
+function ExperienceSection() {
     return (
-        <section id="achievements" className="py-20 px-4 md:px-8 lg:px-12 max-w-7xl mx-auto">
-            <SectionHeader subtitle="My Journey" title="Achievements & Certifications" />
+        <section id="experience" className="py-20 px-4 md:px-8 lg:px-12 max-w-7xl mx-auto">
+            <SectionHeader subtitle="Where I've Been" title="Professional Journey" />
 
             <motion.div
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -40,9 +40,9 @@ function AchievementsSection() { // Renamed component
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
             >
-                {achievements.map((item, index) => (
+                {experiences.map((experience, index) => (
                     <motion.div key={index} variants={itemVariants}>
-                        <AchievementCard item={item} />
+                        <ExperienceCard item={experience} />
                     </motion.div>
                 ))}
             </motion.div>
@@ -50,4 +50,4 @@ function AchievementsSection() { // Renamed component
     );
 }
 
-export default React.memo(AchievementsSection);
+export default React.memo(ExperienceSection);

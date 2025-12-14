@@ -1,6 +1,10 @@
 import React from 'react';
 
-function PortfolioCard({ item }) {
+/**
+ * @param {object} props
+ * @param {import('../data/portfolioData').AchievementItem} props.item
+ */
+function AchievementCard({ item }) {
     const categoryColors = {
         Academic: 'bg-blue-500/10 text-blue-300 border-blue-400/30',
         Technology: 'bg-emerald-500/10 text-emerald-300 border-emerald-400/30',
@@ -30,4 +34,4 @@ function PortfolioCard({ item }) {
     );
 }
 
-export default React.memo(PortfolioCard);
+export default React.memo(AchievementCard);
