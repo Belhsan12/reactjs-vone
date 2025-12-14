@@ -1,79 +1,56 @@
-import { MenuIcon, XIcon } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { motion } from "framer-motion";
+import React, { useState } from 'react';
+import { Search, UserCircle, Menu } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
-export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
+const Navbar = () => {
+  const [searchQuery, setSearchQuery] = useState('');
 
-    const links = [
-        { name: 'Home', href: '/' },
-        { name: 'Agents', href: '#agents' },
-        { name: 'Use Cases', href: '#use-cases' },
-        { name: 'Pricing', href: '#pricing' },
-        { name: 'Docs', href: '#docs' }
-    ];
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log('Searching for:', searchQuery);
+    // Implement search logic here, e.g., navigate to search results page
+  };
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
-            }
-        };
+  return (
+    <nav className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 p-4 md:px-8 flex items-center justify-between gap-4 shadow-sm">
+      <div className="flex items-center gap-4">
+        <button className="lg:hidden p-2 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors duration-200">
+          <Menu size={24} />
+        </button>
+        <Link to="/" className="flex items-center gap-2 group">
+          <span className="bg-gradient-to-r from-indigo-600 to-purple-600 text-transparent bg-clip-text text-xl md:text-2xl font-bold tracking-tight transition-all duration-300 group-hover:scale-105">
+            StreamVista
+          </span>
+        </Link>
+      </div>
 
-        window.addEventListener('scroll', handleScroll);
+      <form onSubmit={handleSearch} className="flex-1 max-w-xl hidden md:flex items-center bg-slate-100 dark:bg-slate-800 rounded-full px-4 py-2 border border-slate-200 dark:border-slate-700 focus-within:ring-2 focus-within:ring-indigo-500 transition-all duration-300">
+        <input
+          type="text"
+          placeholder="Search videos..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="flex-1 bg-transparent border-none focus:outline-none text-slate-800 dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400"
+        />
+        <button type="submit" className="p-2 text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
+          <Search size={20} />
+        </button>
+      </form>
 
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+      <div className="flex items-center gap-2 md:gap-4">
+        <div className="md:hidden">
+          <button className="p-2 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors duration-200">
+            <Search size={24} />
+          </button>
+        </div>
+        <ThemeToggle />
+        <button className="p-2 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors duration-200">
+          <UserCircle size={24} />
+        </button>
+      </div>
+    </nav>
+  );
+};
 
-    return (
-        <>
-            <motion.nav className={`sticky top-0 z-50 flex w-full items-center justify-between px-4 py-3.5 md:px-16 lg:px-24 transition-colors ${isScrolled ? 'bg-white/15 backdrop-blur-lg' : ''}`}
-                initial={{ y: -100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ type: "spring", stiffness: 250, damping: 70, mass: 1 }}
-            >
-                <a href='https://prebuiltui.com?utm_source=genesis'>
-                    <img src='/assets/logo.svg' alt='logo' className='h-8.5 w-auto' width={205} height={48} />
-                </a>
-
-                <div className='hidden items-center space-x-10 md:flex'>
-                    {links.map((link) => (
-                        <a key={link.name} href={link.href} className='transition hover:text-gray-300'>
-                            {link.name}
-                        </a>
-                    ))}
-                    <a href='/' className='btn glass'>
-                        Sign Up
-                    </a>
-                </div>
-
-                <button onClick={() => setIsOpen(true)} className='transition active:scale-90 md:hidden'>
-                    <MenuIcon className='size-6.5' />
-                </button>
-            </motion.nav>
-
-            <div className={`fixed inset-0 z-50 flex flex-col items-center justify-center gap-6 bg-black/20 text-lg font-medium backdrop-blur-2xl transition duration-300 md:hidden ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-                {links.map((link) => (
-                    <a key={link.name} href={link.href} onClick={() => setIsOpen(false)}>
-                        {link.name}
-                    </a>
-                ))}
-
-
-                <a href='/' className='btn glass' onClick={() => setIsOpen(false)}>
-                    Sign Up
-                </a>
-
-                <button onClick={() => setIsOpen(false)} className='rounded-md p-2 glass'>
-                    <XIcon />
-                </button>
-            </div >
-        </>
-    );
-}
+export default Navbar;
